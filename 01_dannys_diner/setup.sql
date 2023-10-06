@@ -1,7 +1,11 @@
+drop schema if exists dannys_diner cascade;
+
 create schema dannys_diner;
 
 set
   search_path = dannys_diner;
+
+drop table if exists sales cascade;
 
 create table
   sales (
@@ -29,6 +33,8 @@ values
   ('C', '2021-01-01', '3'),
   ('C', '2021-01-07', '3');
 
+drop table if exists menu cascade;
+
 create table
   menu (
     "product_id" integer,
@@ -42,6 +48,8 @@ values
   ('1', 'sushi', '10'),
   ('2', 'curry', '15'),
   ('3', 'ramen', '12');
+
+drop table if exists members cascade;
 
 create table
   members ("customer_id" varchar(1), "join_date" DATE);
