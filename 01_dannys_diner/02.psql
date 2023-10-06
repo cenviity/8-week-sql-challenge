@@ -1,0 +1,23 @@
+-- 2. How many days has each customer visited the restaurant?
+with
+    sales as (
+        select
+            *
+        from
+            dannys_diner.sales
+    ),
+    customer_visits as (
+        select
+            customer_id,
+            count(distinct order_date)
+        from
+            sales
+        group by
+            1
+        order by
+            1
+    )
+select
+    *
+from
+    customer_visits;
