@@ -21,7 +21,7 @@ with
             menu.price
         from
             sales
-            inner join menu on sales.product_id = menu.product_id
+            left join menu on sales.product_id = menu.product_id
     ),
     sales_by_customer as (
         select
