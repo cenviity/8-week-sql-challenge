@@ -1,0 +1,40 @@
+-- 1. What is the total amount each customer spent at the restaurant?
+with
+    menu as (
+        select
+            *
+        from
+            dannys_diner.menu
+    ),
+    sales as (
+        select
+            *
+        from
+            dannys_diner.sales
+    ),
+    sales_with_price as (
+        select
+            sales.customer_id,
+            sales.order_date,
+            sales.product_id,
+            menu.product_name,
+            menu.price
+        from
+            sales
+            inner join menu on sales.product_id = menu.product_id
+    ),
+    sales_by_customer as (
+        select
+            customer_id,
+            sum(price) as total_amount
+        from
+            sales_with_price
+        group by
+            1
+        order by
+            1
+    )
+select
+    *
+from
+    sales_by_customer;
